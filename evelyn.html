@@ -83,9 +83,6 @@
             <meta name="color:Modal Background" content="#fff"/>
             <meta name="color:Modal Color" content="#111"/>
             <!-- Widgets -->
-            <meta name="if:Soundcloud Widget Autoplay" content="1"/>
-            <meta name="if:Soundcloud Widget Shuffle" content="1"/>
-            <meta name="text:Soundcloud URL" content=""/>
             <meta name="text:Sidebar Text Widget" content="">
             <meta name="text:Instagram Widget Title" content="Instagram">
             <meta name="text:Instagram Widget Access Token" content="">
@@ -998,31 +995,6 @@
                         </ul>
                     </nav>
                 {/block:IfNavigation}
-                {block:IfSoundcloudURL}
-                    <div id="fuse-sc-player" class="widget cl" style="opacity:1;">
-                        <div class="sc-meta cl">
-                            <div class="img">
-                                <i class="fa fa-play" style="opacity: 0;"></i>
-                            </div>
-                            <div class="sc-info">
-                                <p class="artist"></p>
-                                <p class="track"></p>
-                            </div>
-                        </div>
-                        <div class="sc-controls">
-                            <div class="pause-play">
-                                <i class="fa fa-pause"></i>
-                            </div>
-                            <div class="prev">
-                                <i class="fa fa-step-backward"></i>
-                            </div>
-                            <div class="next">
-                                <i class="fa fa-step-forward"></i>
-                            </div>
-                        </div>
-                        <div class="sc-track-count"></div>
-                    </div>
-                {/block:IfSoundcloudURL}
                 {block:Twitter}
                     <div class="twitter widget cl">
                         <ul id="twitter" class="twitter-feed-widget"></ul>
@@ -1298,14 +1270,6 @@
         <script src="https://code.jquery.com/jquery-2.2.2.js" integrity="sha256-4/zUCqiq0kqxhZIyp4G0Gk+AOtCJsY1TA00k5ClsZYE=" crossorigin="anonymous"></script>
         <script src="http://static.tumblr.com/evx2wil/hQyoa4yv3/plugins.js"></script>
         <script src="http://static.tumblr.com/evx2wil/P0Ooad71y/ants.js"></script>
-        {block:IfSoundcloudURL} 
-            <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-            <script>
-                soundcloudURL = "{text:Soundcloud URL}";
-                soundcloudClientID = '394aae1023264c7233cb81fab17fe036';
-            </script>
-            <script src="http://static.tumblr.com/evx2wil/yAdoad0ru/sc.js"></script>
-        {/block:IfSoundcloudURL}
         <script src="http://static.tumblr.com/evx2wil/bRMo9i9od/modal.js"></script>
         <script src="http://static.tumblr.com/evx2wil/awmo8avlt/demo.js"></script>
         {block:IfTypeKitID}
@@ -1317,9 +1281,6 @@
             (function($) {
                 $(document).ready(function(){
                     $.fuseAnts();
-                    {block:IfSoundcloudURL}
-                        $.fuseSC({block:IfSoundcloudWidgetAutoplay}true{/block:IfSoundcloudWidgetAutoplay}{block:IfNotSoundcloudWidgetAutoplay}false{/block:IfNotSoundcloudWidgetAutoplay},{block:IfSoundcloudWidgetShuffle}true{/block:IfSoundcloudWidgetShuffle}{block:IfNotSoundcloudWidgetShuffle}false{/block:IfNotSoundcloudWidgetShuffle});
-                    {/block:IfSoundcloudURL}
                     $('.tooltip').tooltipster({ multiple: true });
                     $('.tooltip-left').tooltipster({ position: 'left', multiple: true });
                     $('.fuse-photoset.ips').fuseIPS();
